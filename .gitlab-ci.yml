@@ -1,0 +1,33 @@
+default:
+  image: docker:latest
+  services:
+    - docker:dind
+variables:
+  DOCKER_TLS_CERTDIR: "/certs"
+
+docker-build-master:
+  stage: build    
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY --username $CI_REGISTRY_USER --password-stdin
+  script:
+    - echo 'まだビルドさせへんで'
+  only:
+    - master
+
+update-production:
+  stage: deploy
+  image: curlimages/curl
+  script:
+    - curl -X POST $PORTAINER
+  only:
+    - master
+
+docker-build:
+  stage: build
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY --username $CI_REGISTRY_USER --password-stdin
+  script:
+    - echo 'まだビルドさせへんで'
+  except:
+    - master
+
