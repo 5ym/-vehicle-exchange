@@ -1,0 +1,30 @@
+version: '3.9'
+services:
+  bve:
+    build:
+      dockerfile_inline: |
+        FROM rust:1-slim
+        RUN cargo install cargo-watch
+    working_dir: /usr/src/myapp
+    volumes:
+      - ./backend-ve:/usr/src/myapp
+    command: cargo watch -x run
+    depends_on:
+      - db
+  fve:
+    build:
+      dockerfile_inline: |
+        FROM rust:1-slim
+        RUN rustup target add wasm32-unknown-unknown \
+           && cargo install trunk
+    working_dir: /usr/src/myapp
+    volumes:
+      - ./frontend-ve:/usr/src/myapp
+    command: trunk serve
+  db:
+    image: postgres:15
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=sergtsop
+      - POSTGRES_DB=ve

@@ -1,0 +1,23 @@
+public enum ExteriorColors
+{
+    Black = 0,
+    Blue = 1,
+    Brown = 2,
+    Gold = 3,
+    Gray = 4,
+    Green = 5,
+    Orange = 6,
+    Pink = 7,
+    Purple = 8,
+    Red = 9,
+    Silver = 10,
+    Tan = 11,
+    Teal = 12,
+    White = 13,
+    Yellow = 14,
+    Beige = 15,
+    Charcoal = 16,
+    Maroon = 17,
+    Off_White = 18,
+    Other = 19,
+}
