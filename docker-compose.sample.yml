@@ -16,7 +16,10 @@ services:
       dockerfile_inline: |
         FROM rust:1-slim
         RUN rustup target add wasm32-unknown-unknown \
-           && cargo install trunk
+           && cargo install trunk && apt-get update\
+           && apt-get -y install curl \
+           && curl -sLo /usr/local/bin/tailwind https://github.com/tailwindlabs/tailwindcss/releases/download/v3.3.3/tailwindcss-linux-x64 \
+           && chmod +x /usr/local/bin/tailwind
     working_dir: /usr/src/myapp
     volumes:
       - ./frontend-ve:/usr/src/myapp
