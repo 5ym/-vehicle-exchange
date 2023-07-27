@@ -4,7 +4,7 @@ use std::net::SocketAddr;
 #[tokio::main]
 async fn main() {
     // build our application with a route
-    let app = Router::new().route("/", get(handler));
+    let app = Router::new().route("/api", get(handler));
 
     // run it
     let addr = SocketAddr::from(([0, 0, 0, 0], 3000));

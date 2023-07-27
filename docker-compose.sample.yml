@@ -11,6 +11,14 @@ services:
     command: cargo watch -x run
     depends_on:
       - db
+    expose:
+      - 3000
+    networks:
+      - docker_default
+      - default
+    labels:
+      - "traefik.http.routers.bve.rule=Host(`ve.localhost`) && PathPrefix(`/api`)"
+      - "traefik.http.routers.bve.tls=true"
   fve:
     build:
       dockerfile_inline: |
@@ -24,6 +32,14 @@ services:
     volumes:
       - ./frontend-ve:/usr/src/myapp
     command: trunk serve
+    expose:
+      - 8080
+    networks:
+      - docker_default
+      - default
+    labels:
+      - "traefik.http.routers.fve.rule=Host(`ve.localhost`)"
+      - "traefik.http.routers.fve.tls=true"
   db:
     image: postgres:15
     ports:
@@ -31,3 +47,8 @@ services:
     environment:
       - POSTGRES_PASSWORD=sergtsop
       - POSTGRES_DB=ve
+
+networks:
+  docker_default:
+    external: true
+    name: docker_default
