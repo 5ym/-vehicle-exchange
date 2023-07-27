@@ -1,0 +1,8 @@
+{
+    "rust-analyzer.linkedProjects": [
+        "./frontend-ve/Cargo.toml",
+        "./frontend-ve/Cargo.toml",
+        "./frontend-ve/Cargo.toml"
+    ],
+    "rust-analyzer.showUnlinkedFileNotification": false
+}
