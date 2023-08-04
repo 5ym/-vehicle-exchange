@@ -4,7 +4,9 @@ services:
     build:
       dockerfile_inline: |
         FROM rust:1-slim
-        RUN cargo install cargo-watch
+        RUN apt-get update && \
+          apt-get -y install libssl-dev pkg-config && \
+          cargo install cargo-watch sqlx-cli
     working_dir: /usr/src/myapp
     volumes:
       - ./backend-ve:/usr/src/myapp
