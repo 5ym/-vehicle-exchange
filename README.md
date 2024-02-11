@@ -6,9 +6,17 @@
 <https://github.com/5ym/Local-Dev-Traefik>  
 
 ```sh
-cp docker-compose.sample.yml docker-compose.yml
+cp compose.sample.yml compose.yml
 docker compose up
 sudo chown -R $USER:$USER .
 ```
 
 open <http://ve.localhost>
+
+## 予定
+
+- フロントUIライブラリ選定
+- フロントワイヤーフレーム
+- フロント実装
+- バックエンド実装
+- open-api codegenを利用してバックエンドのapiを自動でフロントライブラリ化

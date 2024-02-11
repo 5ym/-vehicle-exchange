@@ -1,10 +1,16 @@
-FROM rust:1 as builder
+FROM oven/bun as base
+WORKDIR /usr/src/app
+EXPOSE 3000
 
-WORKDIR /usr/src/myapp
-RUN rustup target add wasm32-unknown-unknown \
-    && cargo install trunk
+FROM base as builder
+ENV NODE_ENV production
+COPY package.json bun.lockb ./
+RUN bun i --frozen-lockfile
 COPY . .
-RUN trunk build --release
+RUN bun run build
 
-FROM nginx:1
-COPY --from=builder /usr/src/myapp/dist /usr/share/nginx/html
+FROM base
+USER bun
+COPY --from=builder --chown=bun:bun /usr/src/app/.next/standalone .
+COPY --from=builder --chown=bun:bun /usr/src/app/.next/static .next/static
+CMD [ "server.js" ]
