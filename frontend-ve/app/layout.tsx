@@ -5,6 +5,7 @@ import "./globals.css";
 const ud = BIZ_UDPGothic({
   weight: ["400", "700"],
   subsets: ["cyrillic"],
+  variable: "--font-ud",
 });
 
 export const metadata: Metadata = {
@@ -18,8 +19,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={ud.className}>{children}</body>
+    <html lang="ja">
+      <body className={`${ud.variable}`}>{children}</body>
     </html>
   );
 }
