@@ -15,8 +15,8 @@ open <http://ve.localhost>
 
 ## 予定
 
-- フロントワイヤーフレーム(shdcn-uiのパーツでfigamで作成)
-    - https://www.figma.com/file/NZzPZtSrCqqshOJLh2Ihf5/%40shadcn%2Fui---Design-System-(Community)?type=design&node-id=2%3A287&mode=design&t=m2iEpnhhghMzvZfK-1
+- フロントワイヤーフレーム(shdcn-uiのパーツでfigamで作成) TOPのみでDone後は実装しながら
+    - https://www.figma.com/file/oki49lValxojQUUKR44lRE/Untitled?type=whiteboard&t=yTJKVjMXVgEOOoc4-1
 - フロント実装
 - バックエンド実装
     - 認証系とかのやり方がわからん
